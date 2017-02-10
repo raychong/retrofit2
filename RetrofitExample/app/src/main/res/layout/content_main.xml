@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="?attr/actionBarSize"
+    >
+    <RelativeLayout
+        android:id="@+id/current_location_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="@color/row_white_opaque"
+        >
+
+        <ImageView
+            android:id="@+id/img_loc"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/location"
+            android:layout_margin="15dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/menu_drawer"
+            />
+        <fr.castorflex.android.circularprogressbar.CircularProgressBar
+            android:id="@+id/refresh_loader"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:indeterminate="true"
+            app:cpb_colors="@array/progress_colors_gray"
+            app:cpb_rotation_speed="1.0"
+            app:cpb_sweep_speed="1.5"
+            app:cpb_stroke_width="2dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/refresh_loader"
+            android:layout_toRightOf="@id/img_loc"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical" >
+
+            <com.pentagon.retrofitexample.font.TextView_Body2
+                android:id="@+id/current_location_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/current_location"
+                android:textColor="@android:color/white" />
+
+            <com.pentagon.retrofitexample.font.TextView_Caption
+                android:id="@+id/current_location_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detecting_location"
+                android:textColor="@android:color/white"
+                android:ellipsize="end"
+                android:maxLines="3" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

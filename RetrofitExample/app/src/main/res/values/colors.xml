@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#1976D2</color>
+    <color name="color_primary_dark">#000000</color>  <!--  <color name="color_primary_dark">#0D47A1</color> -->
+    <color name="accent_color">#000000</color>
+
+    <color name="eat_color">#EA2D2F</color>
+    <color name="shop_color">#4B56B1</color>
+    <color name="play_color">#825EC0</color>
+    <color name="stay_color">#009688</color>
+    <color name="others_color">#F0A13B</color>
+
+    <color name="primary_text_color">#212121</color>
+    <color name="secondary_text_color">#757575</color>
+    <color name="placeholder_text_color">#B6B6B6</color>
+
+    <color name="sidebar_icon">#c2c2c2</color>
+    <color name="sidebar_icon_tone1">#A3A2A2</color>
+
+    <color name="grey">#e3e2e1</color>
+
+    <color name="link_color">#378FE7</color>
+
+    <color name="login_facebook">#3B5998</color>
+
+    <array name="progress_colors">
+        <item>#FF3F8AF8</item>
+        <item>#FFD8433C</item>
+        <item>#FFF2AF3A</item>
+        <item>#FF279B5E</item>
+    </array>
+
+    <array name="progress_colors_gray">
+        <item>#ffffff</item>
+    </array>
+
+    <color name="progress1">#FF3F8AF8</color>
+    <color name="progress2">#FFD8433C</color>
+    <color name="progress3">#FFF2AF3A</color>
+    <color name="progress4">#FF279B5E</color>
+
+    <color name="opaque_black_bg">#4D000000</color>
+    <color name="opaque_70_black_bg">#7D000000</color>
+    <color name="opaque_50_black_bg">#99000000</color>
+    <color name="opaque_white_bg">#4DFFFFFF</color>
+    <color name="opaque_50_white_bg">#AAFFFFFF</color>
+    <color name="profile_button_row_text">#FAFAFA</color>
+    <color name="light_background_color">#eeeeee</color>
+    <color name="border_color">#e0e0e0</color>
+
+    <color name="fab_color">#f54337</color>
+    <color name="moment_fab_color">#ffab00</color>
+    <color name="checkin_fab_color">#7ed321</color>
+    <color name="create_go_list_fab_color">#9013fe</color>
+    <color name="add_place_to_go_list_fab_color">#DE3561</color>
+    <color name="homepage_toolbar_text">#95c0ea</color>
+
+    <color name="bento_special">#ff5722</color>
+    <color name="bento_trending">#3f51b5</color>
+    <color name="bento_bookmarks">#009688</color>
+    <color name="bento_upvote">#03a9f4</color>
+    <color name="bento_nearest">#9c27b0</color>
+    <color name="bento_top_picks">#ffc107</color>
+    <color name="bento_common">#5fa0e0</color>
+
+    <color name="star_yellow">#fe9901</color>
+    <color name="ratings_separator">#d1d1d1</color>
+
+    <color name="view_deal_button">#4cb050</color>
+    <color name="view_deal_background">#343434</color>
+
+    <color name="opaque_black_bg_editmoment">#B3000000</color>
+
+    <color name="empty_state_text_color">#919191</color>
+
+    <color name="fb_messenger_color">#0084ff</color>
+
+    <color name="indicator_red">#db3236</color>
+    <color name="indicator_green">#3cba54</color>
+    <color name="indicator_yellow">#f4c20d</color>
+    <color name="indicator_blue">#4885ed</color>
+
+    <color name="meta_bar_background">@color/opaque_50_black_bg</color>
+    <color name="meta_bar_text_color">@color/profile_button_row_text</color>
+    <color name="meta_bar_divider_color">#eeeeee</color>
+
+    <!---v2 colors-->
+    <color name="bottombar_opaque_black">#BF000000</color>
+    <color name="toolbar_opaque_black">#80000000</color>
+    <color name="white_50_opacity">#80ffffff</color>
+    <color name="black_50_opacity">#80000000</color>
+    <color name="text_placeholder">#61000000</color>
+    <color name="text_search_bar">#4a4a4a</color>
+    <color name="text_search_bar_opacity">#804a4a4a</color>
+    <color name="text_location_placeholder">#6f4a4a4a</color>
+    <color name="divider_color">#9b9b9b</color>
+    <color name="row_white_opaque">#804a494a</color>
+    <color name="row_gradient_end_color">#99abb3bd</color>
+    <color name="separator_color">#979797</color>
+    <color name="separator_color_opacity">#50979797</color>
+    <color name="dialog_background">#E6000000</color>
+    <color name="filter_buttons">#809b9b9b</color>
+    <color name="filter_slider">#CCffffff</color>
+    <color name="place_golist_text">#999999</color>
+    <color name="unread_notification_color">#809b9a9b</color>
+    <color name="reject_button">#d0021b</color>
+    <color name="moment_bottombar">#E64a4a4a</color>
+
+</resources>

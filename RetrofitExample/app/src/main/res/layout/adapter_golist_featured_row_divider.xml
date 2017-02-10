@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="40dp"
+    android:background="@color/text_search_bar_opacity"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="9dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/v2_public"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@string/go_list"
+        />
+    <com.pentagon.retrofitexample.font.TextView_Body2
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:textColor="@android:color/white"
+        android:text="@string/go_list_world_label"
+        android:layout_gravity="center_vertical"
+        />
+
+</LinearLayout>
+
+
+
+
+
