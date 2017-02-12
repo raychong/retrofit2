@@ -25,7 +25,7 @@ import com.pentagon.retrofitexample.model.GoList;
 import com.pentagon.retrofitexample.model.Token;
 import com.pentagon.retrofitexample.service.LocationService;
 import com.pentagon.retrofitexample.subscribers.ProgressSubscriber;
-import com.pentagon.retrofitexample.subscribers.SubscriberOnNextListener;
+import com.pentagon.retrofitexample.subscribers.SubscriberListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity{
     private GoListAdapter adapter;
     private LinearLayoutManager manager;
 
-    private SubscriberOnNextListener getWorldFeaturedGoListOnNext;
-    private SubscriberOnNextListener getTokenOnNext;
-    private SubscriberOnNextListener getCityNameOnNext;
+    private SubscriberListener getWorldFeaturedGoListOnNext;
+    private SubscriberListener getTokenOnNext;
+    private SubscriberListener getCityNameOnNext;
 
     private String accessToken = "";
     private String appId = "";
@@ -86,21 +86,51 @@ public class MainActivity extends AppCompatActivity{
         goLists.add(0, g);
         adapter.setList(goLists);
         recyclerView.setAdapter(adapter);
-        getTokenOnNext  = new SubscriberOnNextListener<Token>() {
+        getTokenOnNext  = new SubscriberListener<Token>() {
+            @Override
+            public void onStart() {
+
+            }
+
             @Override
             public void onNext(Token token) {
                 accessToken = token.getAccessToken().toString();
                 getGoList();
             }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
         };
         getAccessToken();
-        getWorldFeaturedGoListOnNext = new SubscriberOnNextListener<List<GoList>>() {
+        getWorldFeaturedGoListOnNext = new SubscriberListener<List<GoList>>() {
+            @Override
+            public void onStart() {
+
+            }
+
             @Override
             public void onNext(List<GoList> subjects) {
                 loadingMore = false;
                 ArrayList<GoList> list = ( ArrayList<GoList>)subjects;
                 goLists.addAll(list);
                 adapter.append(list);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+
             }
         };
 
@@ -118,11 +148,26 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         });
-        getCityNameOnNext= new SubscriberOnNextListener<City>() {
+        getCityNameOnNext= new SubscriberListener<City>() {
+            @Override
+            public void onStart() {
+
+            }
+
             @Override
             public void onNext(City city) {
                 progressBar.setVisibility(View.GONE);
                 tvAddress.setText(""+city.getAddress());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+
             }
         };
 

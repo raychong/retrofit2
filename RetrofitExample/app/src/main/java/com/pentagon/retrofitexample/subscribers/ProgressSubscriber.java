@@ -17,15 +17,15 @@ import rx.Subscriber;
  */
 public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCancelListener {
 
-    private SubscriberOnNextListener mSubscriberOnNextListener;
+    private SubscriberListener mSubscriberListener;
     private ProgressDialogHandler mProgressDialogHandler;
 
     private Context context;
     private boolean showProgressDialog = false;
 
 
-    public ProgressSubscriber(SubscriberOnNextListener mSubscriberOnNextListener, Context context,boolean showProgressDialog) {
-        this.mSubscriberOnNextListener = mSubscriberOnNextListener;
+    public ProgressSubscriber(SubscriberListener mSubscriberListener, Context context, boolean showProgressDialog) {
+        this.mSubscriberListener = mSubscriberListener;
         this.context = context;
         this.showProgressDialog = showProgressDialog;
         mProgressDialogHandler = new ProgressDialogHandler(context, this, true);
@@ -46,18 +46,27 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
 
     @Override
     public void onStart() {
+        if (mSubscriberListener != null) {
+            mSubscriberListener.onStart();
+        }
         if(showProgressDialog)
             showProgressDialog();
     }
 
     @Override
     public void onCompleted() {
+        if (mSubscriberListener != null) {
+            mSubscriberListener.onCompleted();
+        }
         if(showProgressDialog)
             dismissProgressDialog();
     }
 
     @Override
     public void onError(Throwable e) {
+        if (mSubscriberListener != null) {
+            mSubscriberListener.onError(e);
+        }
         String msg = "Connection timeout";
         if (e instanceof SocketTimeoutException) {
             Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
@@ -76,8 +85,8 @@ public class ProgressSubscriber<T> extends Subscriber<T> implements ProgressCanc
      */
     @Override
     public void onNext(T t) {
-        if (mSubscriberOnNextListener != null) {
-            mSubscriberOnNextListener.onNext(t);
+        if (mSubscriberListener != null) {
+            mSubscriberListener.onNext(t);
         }
     }
 
