@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -54,8 +55,8 @@ public class MainActivity extends AppCompatActivity{
     private SubscriberListener getCityNameOnNext;
 
     private String accessToken = "";
-    private String appId = "";
-    private String appSecret = "";
+    private String appId = "3e548af11bb736432072882831c24a4c";
+    private String appSecret = "cf11bb24a82327313643e5aT84072abc";
 
     private ArrayList<GoList> goLists;
     private boolean loadingMore = true;
@@ -165,11 +166,28 @@ public class MainActivity extends AppCompatActivity{
 
             }
 
-            @Override
+            @Override  
             public void onCompleted() {
 
             }
         };
+
+        LocationUtil.LocationResult locationResult = new LocationUtil.LocationResult(){
+            @Override
+            public void gotLocation(Location location){
+                //Got the location!
+                System.out.println("latitude - "+location.getLatitude());
+                System.out.println("longitude - "+location.getLongitude());
+                HttpMethods.getInstance()
+                        .getCityName(new ProgressSubscriber(getCityNameOnNext, MainActivity.this,false)
+                                ,"Bearer "+accessToken, location.getLatitude(),location.getLongitude());
+
+            }
+        };
+        LocationUtil myLocation = new LocationUtil();
+        myLocation.getLocation(this, locationResult);
+
+
 
     }
 
@@ -178,6 +196,34 @@ public class MainActivity extends AppCompatActivity{
         super.onStart();
         try{
             checkResult();
+//            PublishRelay<Integer> publishRelay = PublishRelay.create();
+//            Observable<Integer> relayObservable;
+//            relayObservable = publishRelay
+//                    .doOnSubscribe(() -> {
+////                        Log.i("RxExperiments", "ReplayingShare->doOnSubscribe");
+//                        // Register to event here...
+//                    }).doOnUnsubscribe(() -> {
+//                        Log.i("RxExperiments", "ReplayingShare->doOnUnsubscribe");
+//                        // Un-register from event here...
+//                    })
+//                    .compose(ReplayingShare.instance());
+//
+//            Log.i("RxExperiments", "ReplayingShare->observer-1 subscribes");
+//            Subscription subscription1 = relayObservable.subscribe(i -> {
+//                Log.i("RxExperiments", "ReplayingShare->observer-1->onNext with " + i);
+//            });
+//           publishRelay
+//
+//            Log.i("RxExperiments", "ReplayingShare->observer-2 subscribes");
+//            Subscription subscription2 = relayObservable.subscribe(i -> {
+//                Log.i("RxExperiments", "ReplayingShare->observer-2->onNext with " + i);
+//            });
+//            publishRelay.call(2);
+//
+//            Log.i("RxExperiments", "ReplayingShare->observer-1 unsubscribes");
+//            subscription1.unsubscribe();
+//            Log.i("RxExperiments", "ReplayingShare->observer-2 unsubscribes");
+//            subscription2.unsubscribe();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -229,8 +275,8 @@ public class MainActivity extends AppCompatActivity{
                 permissionGranted = true;
             }
 
-            if(permissionGranted)
-                startLocationIntent();
+//            if(permissionGranted)
+//                startLocationIntent();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -247,7 +293,7 @@ public class MainActivity extends AppCompatActivity{
                     if(accessFineLoc && accessCoarseLoc)
                     {
                         permissionGranted = true;
-                        startLocationIntent();
+//                        startLocationIntent();
                     }
                 }
 

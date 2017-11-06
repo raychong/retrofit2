@@ -239,7 +239,7 @@ public class GoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         String[] fileStr = fileName.split("\\?");
                         fileName = fileStr[0];
                     }
-                    String defaultPrefix = "http://d3f48swccogl5m.cloudfront.net/place/";
+                    String defaultPrefix = "https://d3f48swccogl5m.cloudfront.net/place/";
                     String url = defaultPrefix + imgWidth + "x" + imgHeight + "/" + fileName + "?url=" + imageURL;
                     return url;
                 } else {
@@ -251,21 +251,21 @@ public class GoListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         if (imageURL.startsWith("//files.upnixt.com/cover")) {
                             String[] str = imageURL.split("cover/");
                             String fileName = str[1];
-                            String defaultPrefix = "http://d3f48swccogl5m.cloudfront.net/cover/";
+                            String defaultPrefix = "https://d3f48swccogl5m.cloudfront.net/cover/";
 
                             String url = defaultPrefix + imgWidth + "x" + imgHeight + "/" + fileName + "?url=http:" + imageURL;
                             return url;
                         } else if (imageURL.startsWith("//files.upnixt.com/moment")) {
                             String[] str = imageURL.split("moment/");
                             String fileName = str[1];
-                            String defaultPrefix = "http://d3f48swccogl5m.cloudfront.net/cover/";
+                            String defaultPrefix = "https://d3f48swccogl5m.cloudfront.net/cover/";
 
                             String url = defaultPrefix + imgWidth + "x" + imgHeight + "/" + fileName + "?url=http:" + imageURL;
                             return url;
                         } else {
                             String[] str = imageURL.split("/");
                             String fileName = str[str.length - 1];
-                            String defaultPrefix = "http://d3f48swccogl5m.cloudfront.net/place/";
+                            String defaultPrefix = "https://d3f48swccogl5m.cloudfront.net/place/";
 
                             String url = defaultPrefix + imgWidth + "x" + imgHeight + "/" + fileName + "?url=" + imageURL;
 

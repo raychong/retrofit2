@@ -13,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.List;
+
 /**
  * Created by RayChongJH on 9/2/17.
  */
@@ -38,19 +40,21 @@ public class LocationService extends Service implements LocationListener {
     @Override
     public void onStart(Intent intent, int startId) {
         try {
+            solution2();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void solution1(){
+        try{
             if (locationManager.getProvider(LocationManager.NETWORK_PROVIDER) != null)
                 locationManager
                         .requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0,
                                 this);
             else if (locationManager.getProvider(LocationManager.GPS_PROVIDER) != null) {
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
                 locationManager
@@ -60,7 +64,52 @@ public class LocationService extends Service implements LocationListener {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
 
+    public void solution2(){
+        try{
+            String provider = "";
+            // 获取所有可用的位置提供器
+            List<String> providerList = locationManager.getProviders(true);
+            if (providerList.contains(LocationManager.GPS_PROVIDER)) {
+                //优先使用gps
+                System.out.println("[GPS provider] GPS");
+                provider = LocationManager.GPS_PROVIDER;
+            } else if (providerList.contains(LocationManager.NETWORK_PROVIDER)) {
+                System.out.println("[GPS provider] Network");
+                provider = LocationManager.NETWORK_PROVIDER;
+            } else {
+                // 没有可用的位置提供器
+                Toast.makeText(this, "没有位置提供器可供使用", Toast.LENGTH_LONG)
+                        .show();
+                return;
+            }
+            if(!provider.equalsIgnoreCase("")){
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                Location location = locationManager.getLastKnownLocation(provider);
+                if (location != null) {
+                    // 显示当前设备的位置信息
+                    String firstInfo = "第一次请求的信息";
+//                    showLocation(location, firstInfo);
+                } else {
+                    String info = "无法获得当前位置";
+                    Toast.makeText(this, info, Toast.LENGTH_SHORT).show();
+//                    positionText.setText(info);
+                }
+
+                // 更新当前位置
+
+            }else{
+                Toast.makeText(this, "provider is null", Toast.LENGTH_LONG)
+                        .show();
+            }
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0, 0,
+                    this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

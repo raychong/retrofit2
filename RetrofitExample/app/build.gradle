@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -10,15 +11,27 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
+    dataBinding {
         enabled true
+    }
+}
+buildscript {
+    repositories {
+        mavenCentral()
     }
 }
 
@@ -31,8 +44,9 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.android.support:cardview-v7:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+
     testCompile 'junit:junit:4.12'
 
     //Retrofit
@@ -44,6 +58,8 @@ dependencies {
     //RxAndroid
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+    compile 'com.jakewharton.rx:replaying-share:2.0.0'
 
     //Gson
     compile 'com.google.code.gson:gson:2.7'
@@ -56,6 +72,7 @@ dependencies {
 
     //Image loader
     compile 'com.github.bumptech.glide:glide:3.7.0'
-
-
+}
+retrolambda {
+    javaVersion JavaVersion.VERSION_1_7
 }
